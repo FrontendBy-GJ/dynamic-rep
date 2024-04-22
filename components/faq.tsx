@@ -19,7 +19,7 @@ export default function FAQ() {
 
       <Accordion type="single" collapsible className="max-w-2xl mx-auto">
         {faqs.map((faq, idx) => (
-          <AccordionItem value={`item-${idx + 1}`} className="text-">
+          <AccordionItem key={idx} value={`item-${idx + 1}`} className="text-">
             <AccordionTrigger className="text-sm md:text-base text-start">
               {faq.question}
             </AccordionTrigger>
@@ -35,7 +35,7 @@ export default function FAQ() {
         <p className="text-sm lg:text-base">
           Have more questions? Get in touch with us.
         </p>
-        <Button variant={'outline'}>Contact</Button>
+        <Button>Contact</Button>
       </div>
     </section>
   );

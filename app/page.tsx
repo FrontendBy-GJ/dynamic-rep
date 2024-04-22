@@ -1,17 +1,23 @@
 import Cta from '@/components/cta';
 import FAQ from '@/components/faq';
-import Footer from '@/components/footer';
 import RepGoalList from '@/components/repGoalList';
 import Section from '@/components/section';
+import rackDumbbells from '/public/dumbbells.jpeg';
+import manTriPushdown from '/public/man-triceps.jpeg';
+import womanOHP from '/public/woman-overhead-press.jpeg';
+import barbellCurls from '/public/man-barbell-curls.jpeg';
+import unrackingDB from '/public/man-unracking-dumbbells.jpeg';
 
 export default function Home() {
   return (
-    // <main className="flex min-h-screen flex-col items-center justify-between p-24">
-    <main className="max-w-7xl mx-auto px-4 md:px-6 xl:px-0">
+    <main className={`max-w-7xl mx-auto px-4 md:px-6 xl:px-0`}>
       <Section
         focus="Achieve"
         title="Personalized Training with Dynamic Rep Goal System"
         paragraph="Experience the benefits of the dynamic rep goal system, a personalized approach to training that helps you reach your fitness goals efficiently and effectively."
+        image={rackDumbbells}
+        priority
+        alt="Rack of dumbbells"
       >
         <ul className="list-disc list-outside pl-4 text-sm lg:text-base py-5 space-y-3">
           <li>Set Rep Goals for Optimal Performance</li>
@@ -24,6 +30,8 @@ export default function Home() {
         focus="Efficiency"
         title="Maximize Your Workout Efficiency and Progression"
         paragraph="The dynamic rep goal system is designed to optimize your workouts by setting rep targets and gradually increasing weights for maximum efficiency and progression."
+        image={manTriPushdown}
+        alt="Man doing tricep push downs"
       >
         <div className="grid lg:grid-cols-2 gap-6 py-5">
           <div className="space-y-2">
@@ -44,7 +52,6 @@ export default function Home() {
       </Section>
 
       <Section
-        focus="Achieve"
         title="Introducing the Dynamic Rep Goal System"
         paragraph="Our exercise logger uses the Dynamic Rep Goal System to help you reach your fitness goals. Set rep goal targets and adjust weights dynamically for optimal progress."
         center
@@ -54,19 +61,22 @@ export default function Home() {
             title="What is a Rep Goal Target?"
             paragraph="A rep goal target is the total number of reps you aim to achieve
               when adding up each set of an exercise."
-            img=""
+            img={unrackingDB}
+            alt="Man unracking dumbbells"
           />
           <RepGoalList
             title="How Does the Dynamic Rep Goal System Work?"
             paragraph="Our system adjusts weights based on your rep goal targets,
               allowing for progressive overload and continuous improvement."
-            img=""
+            img={barbellCurls}
+            alt="Man doing barbell curls"
           />
           <RepGoalList
             title="Set Rep Goal Targets for Optimal Progress"
             paragraph="Determine your rep goal targets to work within your desired rep
               range and achieve maximum results."
-            img=""
+            img={womanOHP}
+            alt="Woman overhead pressing"
           />
         </ul>
       </Section>
@@ -74,8 +84,6 @@ export default function Home() {
       <Cta />
 
       <FAQ />
-
-      <Footer />
     </main>
   );
 }
