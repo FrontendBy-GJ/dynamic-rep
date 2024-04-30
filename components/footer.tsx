@@ -1,21 +1,20 @@
-'use client';
-
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { blackOps } from './navbar';
-import { usePathname } from 'next/navigation';
+import Logo from './logo';
 
 export default function Footer() {
   const date = new Date();
-  const pathname = usePathname();
-
-  if (pathname === '/sign-in') return null;
 
   return (
     <footer className={`py-10 text-center`}>
-      <section className="max-w-7xl mx-auto">
+      <section className="max-w-7xl mx-auto md:px-6">
         <div className="space-y-10 lg:flex justify-between items-center lg:space-y-0">
-          <div className={`${blackOps.className} text-3xl`}>DynamicRep</div>
+          <div
+            className={`${blackOps.className} text-3xl w-fit mx-auto lg:mx-0`}
+          >
+            <Logo />
+          </div>
           <div className="flex gap-4 text-xl justify-center">
             <FaFacebook className="cursor-pointer" />
             <FaInstagram className="cursor-pointer" />

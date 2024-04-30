@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import './globals.css';
-import { ThemeProvider } from '@/components/theme.provider';
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const nunito = Nunito({ subsets: ['latin'], weight: ['500', '600'] });
 
@@ -22,13 +20,11 @@ export default function RootLayout({
       <body className={nunito.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
+          // disableTransitionOnChange
         >
-          <Navbar />
           {children}
-          <Footer />
         </ThemeProvider>
       </body>
     </html>

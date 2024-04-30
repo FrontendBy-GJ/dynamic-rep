@@ -61,8 +61,8 @@ export default function Section({
         </p>
         {center ? null : children}
         {center ? null : (
-          <Link href={'/sign-in'}>
-            <Button variant={'link'} className="p- flex items-center gap-2">
+          <Link href={'/login'}>
+            <Button variant={'link'} className="flex items-center gap-2">
               Sign up
               <FaChevronRight aria-hidden="true" />
             </Button>
@@ -83,7 +83,7 @@ export default function Section({
         </div>
       )}
       {center && (
-        <Link href={'/sign-in'} className="self-start">
+        <Link href={'/login'} className="self-start">
           <Button variant={'link'} className="flex items-center gap-2">
             Sign up
             <FaChevronRight aria-hidden="true" />
