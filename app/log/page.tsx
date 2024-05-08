@@ -17,14 +17,16 @@ export default async function LogPage() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div>
         {!logs?.length ? (
           <div className="flex justify-center mt-[40vh]">
             <ExerciseLogForm />
           </div>
         ) : (
-          <div className="px-4 md:px-6 xl:px-0 max-w-7xl mx-auto">
+          <div
+          // className="px-4 md:px-6 xl:px-0 max-w-7xl mx-auto"
+          >
             <LogTable columns={tableColumns} data={logs} />
           </div>
         )}
