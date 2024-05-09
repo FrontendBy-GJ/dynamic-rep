@@ -33,10 +33,50 @@ const workout = [
   },
 ];
 
+const schedule1 = [
+  { day: 'Monday', activity: 'workout A' },
+  { day: 'Tuesday', activity: 'workout B' },
+  { day: 'Wednesday', activity: 'rest' },
+  { day: 'Thursday', activity: 'workout A' },
+  { day: 'Friday', activity: 'workout B' },
+  { day: 'Saturday', activity: 'rest' },
+  { day: 'Sunday', activity: 'rest' },
+];
+const schedule2 = [
+  { day: 'Monday', activity: 'workout A' },
+  { day: 'Tuesday', activity: 'rest' },
+  { day: 'Wednesday', activity: 'workout B' },
+  { day: 'Thursday', activity: 'rest' },
+  { day: 'Friday', activity: 'workout A' },
+  { day: 'Saturday', activity: 'rest' },
+  { day: 'Sunday', activity: 'workout B' },
+];
+
 export default function WorkoutPage() {
   return (
-    <div className="flex flex-col gap-6 lg:flex-row lg:justify-between py-8">
-      <WorkoutTable workout={workout} />
+    <div className="py-8">
+      <div className="flex flex-col gap-8 lg:gap-6 lg:flex-row lg:justify-between">
+        <WorkoutTable workout={workout} />
+      </div>
+
+      <h3 className="my-6 text-xl text-center">Schedule examples</h3>
+      <div className="flex flex-col gap-12 sm:gap- sm:flex-row justify-between items- sm:max-w-md mx-auto">
+        <ul className="space-y-4 list-decimal list-inside">
+          {schedule1.map((day, index) => (
+            <li key={index}>
+              {day.day} - {day.activity}
+            </li>
+          ))}
+        </ul>
+
+        <ul className="space-y-4 list-decimal list-inside">
+          {schedule2.map((day, index) => (
+            <li key={index}>
+              {day.day} - {day.activity}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
