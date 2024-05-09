@@ -118,7 +118,7 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
   },
   {
     accessorKey: 'weight_per_set',
-    header: () => <div className="text-center">Weight Per Set</div>,
+    header: () => <div className="text-center">Weight</div>,
     cell: ({ row }) => {
       const weight = row.getValue('weight_per_set') as number[];
       const formatted = weight.join(' / ');
@@ -127,7 +127,7 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
   },
   {
     accessorKey: 'reps_per_set',
-    header: () => <div className="text-center">Reps Per Set</div>,
+    header: () => <div className="text-center">Reps</div>,
     cell: ({ row }) => {
       const reps = row.getValue('reps_per_set') as number[];
       const formatted = reps.join(' / ');
