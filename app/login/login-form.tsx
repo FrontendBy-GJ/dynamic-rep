@@ -78,7 +78,7 @@ export default function LoginForm({
 
   if (isSubmitSuccessful) {
     return (
-      <p className="text-center max-w-md md:max-w-sm mx-auto">
+      <p className="text-center max-w-sm mx-auto">
         A magic link has been sent to your email. Please check your inbox and
         click on the link to continue. Note that the link will open in a new
         tab. You can close this page.

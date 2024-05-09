@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import manPosing from '/public/man-posing.jpeg';
+import manPosing from '/public/man-posing.webp';
 import Link from 'next/link';
 import { blackOps } from '@/components/navbar';
 import Logo from '@/components/logo';
@@ -17,10 +17,9 @@ export default function LoginPage({
           <Image
             src={manPosing}
             alt="Man posing"
-            width={2730}
-            height={4096}
             priority
             className="h-full w-full object-cover"
+            placeholder="blur"
           />
         </div>
         <div className="flex flex-col flex-1 gap-10 mt-[30vh] items-center">

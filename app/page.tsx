@@ -2,11 +2,11 @@ import Cta from '@/components/cta';
 import FAQ from '@/components/faq';
 import RepGoalList from '@/components/repGoalList';
 import Section from '@/components/section';
-import rackDumbbells from '/public/dumbbells.jpeg';
-import manTriPushdown from '/public/man-triceps.jpeg';
-import womanOHP from '/public/woman-overhead-press.jpeg';
-import barbellCurls from '/public/man-barbell-curls.jpeg';
-import unrackingDB from '/public/man-unracking-dumbbells.jpeg';
+import rackDumbbells from '/public/dumbbells.webp';
+import manTriPushdown from '/public/man-triceps.webp';
+import womanOHP from '/public/woman-overhead-press.webp';
+import barbellCurls from '/public/man-barbell-curls.webp';
+import unrackingDB from '/public/man-unracking-dumbbells.webp';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 

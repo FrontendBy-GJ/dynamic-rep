@@ -18,9 +18,8 @@ export default function RepGoalList({
         <Image
           src={img}
           alt={alt}
-          width={5192}
-          height={3465}
           className="object-cover h-full w-full"
+          placeholder="blur"
         />
       </div>
       <div className="space-y-4 md:px-2 lg:px-0">

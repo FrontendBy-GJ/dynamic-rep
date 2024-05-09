@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FaChevronRight } from 'react-icons/fa';
 import Image, { StaticImageData } from 'next/image';
 import { LiaDumbbellSolid } from 'react-icons/lia';
+import { createClient } from '@/utils/supabase/server';
 
 export const bebasNeue = Bebas_Neue({ subsets: ['latin'], weight: '400' });
 
@@ -18,7 +19,7 @@ type SectionProps = {
   center?: boolean;
   children: React.ReactNode;
 };
-export default function Section({
+export default async function Section({
   focus,
   title,
   paragraph,
@@ -28,6 +29,11 @@ export default function Section({
   center,
   children,
 }: SectionProps) {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <section
       className={cn(
@@ -60,14 +66,14 @@ export default function Section({
           {paragraph}
         </p>
         {center ? null : children}
-        {center ? null : (
+        {center ? null : !user ? (
           <Link href={'/login'}>
             <Button variant={'link'} className="flex items-center gap-2">
               Sign up
               <FaChevronRight aria-hidden="true" />
             </Button>
           </Link>
-        )}
+        ) : null}
       </div>
       {center && children}
       {center ? null : (
@@ -75,21 +81,21 @@ export default function Section({
           <Image
             src={image!}
             alt={alt!}
-            width={4592}
-            height={3448}
             priority={priority}
             className="object-cover h-full w-full"
+            placeholder="blur"
           />
         </div>
       )}
-      {center && (
-        <Link href={'/login'} className="self-start">
-          <Button variant={'link'} className="flex items-center gap-2">
-            Sign up
-            <FaChevronRight aria-hidden="true" />
-          </Button>
-        </Link>
-      )}
+      {center &&
+        (!user ? (
+          <Link href={'/login'} className="self-start">
+            <Button variant={'link'} className="flex items-center gap-2">
+              Sign up
+              <FaChevronRight aria-hidden="true" />
+            </Button>
+          </Link>
+        ) : null)}
     </section>
   );
 }
