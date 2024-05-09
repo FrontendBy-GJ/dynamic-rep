@@ -3,9 +3,11 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown } from 'lucide-react';
+import { ArrowUpDown, Trash2 } from 'lucide-react';
 import { Black_Ops_One } from 'next/font/google';
 import EditExerciseLogForm from './edit-exercise-log-form';
+import { deleteExercise } from './actions';
+import { toast } from '@/components/ui/use-toast';
 
 const blackOps = Black_Ops_One({ subsets: ['latin'], weight: '400' });
 
@@ -21,6 +23,23 @@ export type TableColumnsProps = {
   total_reps: number | null;
 };
 
+const handleDelete = async (id: string) => {
+  const result = await deleteExercise(id);
+
+  if (result.success) {
+    toast({
+      title: 'Success',
+      description: 'Exercise deleted successfully',
+    });
+  } else {
+    console.error('Error:', result.message);
+    toast({
+      title: 'Error',
+      description: result.message,
+    });
+  }
+};
+
 export const tableColumns: ColumnDef<TableColumnsProps>[] = [
   {
     accessorKey: 'exercise',
@@ -32,10 +51,20 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
         .map((val) => val.charAt(0).toUpperCase() + val.slice(1))
         .join(' ');
       return (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2">
           {formatted}
-          <div>
+          <div className="flex items-center gap-2">
             <EditExerciseLogForm exerciseData={row.original} />
+
+            <Button
+              size={'icon'}
+              variant={'ghost'}
+              aria-label="Delete"
+              title="Delete"
+              onClick={() => handleDelete(row.original.id)}
+            >
+              <Trash2 aria-hidden="true" className="size-4" />
+            </Button>
           </div>
         </div>
       );

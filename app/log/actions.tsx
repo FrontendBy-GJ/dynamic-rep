@@ -3,6 +3,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { FormProps } from './exercise-log-form';
 import { EditFormProps } from './edit-exercise-log-form';
+import { revalidatePath } from 'next/cache';
 
 export const getFormData = async (values: FormProps) => {
   const supabase = createClient();
@@ -61,5 +62,22 @@ export const editFormData = async (values: EditFormProps) => {
   } catch (error) {
     console.error('Error updating exercise:', (error as Error).message);
     throw error;
+  }
+};
+
+export const deleteExercise = async (id: string) => {
+  const supabase = createClient();
+  try {
+    const { error } = await supabase.from('ExerciseLogs').delete().eq('id', id);
+
+    if (error) {
+      return { success: false, message: 'Failed to delete exercise' };
+    } else {
+      revalidatePath('/log');
+    }
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting exercise:', (error as Error).message);
+    return { success: false, message: 'An unexpected error occurred' };
   }
 };
