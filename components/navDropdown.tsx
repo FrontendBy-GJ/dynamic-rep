@@ -19,8 +19,6 @@ export default async function Dropdown() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) return null;
-
   const { data } = await supabase
     .from('profiles')
     .select('*')
@@ -50,12 +48,14 @@ export default async function Dropdown() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <div className="space-y-3">
-          <DropdownMenuItem>Profile</DropdownMenuItem>
           <DropdownMenuItem asChild className="cursor-pointer">
             <Link href={'/log'}>Log</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild className="cursor-pointer">
-            <Link href={'/settings'}>Settings</Link>
+            <Link href={'/log/workout'}>Workout</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild className="cursor-pointer">
+            <Link href={'/log/stats'}>Stats</Link>
           </DropdownMenuItem>
           <form action={signOut}>
             <DropdownMenuItem className="w-full" asChild>

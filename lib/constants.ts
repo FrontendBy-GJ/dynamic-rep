@@ -1,1 +1,1 @@
-export const protectedPaths = ['/log', '/stats'];
+export const protectedPaths = ['/log', '/log/workout', '/log/stats'];
