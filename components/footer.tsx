@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { blackOps } from './navbar';
 import Logo from './logo';
+import { blackOps } from '@/lib/constants';
 
 export default function Footer() {
   const date = new Date();

@@ -3,9 +3,7 @@
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-import { Black_Ops_One } from 'next/font/google';
-
-const blackOps = Black_Ops_One({ subsets: ['latin'], weight: '400' });
+import { blackOps } from '@/lib/constants';
 
 export default function SidebarNav({
   sidebarLinks,

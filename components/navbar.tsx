@@ -1,12 +1,10 @@
-import { Black_Ops_One } from 'next/font/google';
 import Link from 'next/link';
 import Dropdown from './navDropdown';
 import { Button } from './ui/button';
 import Logo from './logo';
 import { createClient } from '@/utils/supabase/server';
 import ThemeDropdown from './themes';
-
-export const blackOps = Black_Ops_One({ subsets: ['latin'], weight: '400' });
+import { blackOps } from '@/lib/constants';
 
 export default async function Navbar() {
   const supabase = createClient();

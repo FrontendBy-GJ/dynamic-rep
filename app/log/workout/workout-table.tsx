@@ -6,10 +6,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { blackOps } from '@/lib/constants';
 import { cn } from '@/lib/utils';
-import { Black_Ops_One } from 'next/font/google';
-
-const blackOps = Black_Ops_One({ subsets: ['latin'], weight: '400' });
 
 type Workout = {
   type: string;

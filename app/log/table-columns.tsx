@@ -4,12 +4,10 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown, Trash2 } from 'lucide-react';
-import { Black_Ops_One } from 'next/font/google';
 import EditExerciseLogForm from './edit-exercise-log-form';
 import { deleteExercise } from './actions';
 import { toast } from '@/components/ui/use-toast';
-
-const blackOps = Black_Ops_One({ subsets: ['latin'], weight: '400' });
+import { blackOps } from '@/lib/constants';
 
 export type TableColumnsProps = {
   id: string;

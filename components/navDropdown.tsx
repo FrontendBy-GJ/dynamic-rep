@@ -7,11 +7,11 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { Avatar, AvatarImage } from './ui/avatar';
-import { blackOps } from './navbar';
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { createClient } from '@/utils/supabase/server';
 import { signOut } from '@/app/login/actions';
+import { blackOps } from '@/lib/constants';
 
 export default async function Dropdown() {
   const supabase = createClient();
@@ -44,7 +44,7 @@ export default async function Dropdown() {
       </DropdownMenuTrigger>
       <DropdownMenuContent side="right" sideOffset={10} className="mt-5">
         <DropdownMenuLabel className="text-center">
-          My Account
+          {!data?.display_name ? data?.email : data.display_name}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <div className="space-y-3">

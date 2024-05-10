@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import manPosing from '/public/man-posing.webp';
 import Link from 'next/link';
-import { blackOps } from '@/components/navbar';
 import Logo from '@/components/logo';
 import LoginForm from './login-form';
+import { blackOps } from '@/lib/constants';
 
 export default function LoginPage({
   searchParams,
