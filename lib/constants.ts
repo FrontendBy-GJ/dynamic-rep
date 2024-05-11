@@ -1,6 +1,8 @@
-import { Black_Ops_One } from 'next/font/google';
+import { Black_Ops_One, Nunito } from 'next/font/google';
 
 export const blackOps = Black_Ops_One({ subsets: ['latin'], weight: '400' });
+
+export const nunito = Nunito({ subsets: ['latin'], weight: ['500', '600'] });
 
 export const protectedPaths = ['/log', '/log/workout', '/log/stats'];
 

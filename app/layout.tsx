@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
-import { Nunito } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
-
-export const nunito = Nunito({ subsets: ['latin'], weight: ['500', '600'] });
+import { nunito } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
