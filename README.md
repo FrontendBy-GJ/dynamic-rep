@@ -91,7 +91,7 @@ DynamicRep offers a comprehensive set of features to streamline workout tracking
 
 ## Get Started
 
-Experience the power of [DynamicRep]() by visiting the website and creating an account today. Start logging your workouts and unlock the full potential of the dynamic rep goal system to transform your fitness journey.
+Experience the power of [DynamicRep](https://dynamic-rep.vercel.app/) by visiting the website and creating an account today. Start logging your workouts and unlock the full potential of the dynamic rep goal system to transform your fitness journey.
 
 ## Author
 
