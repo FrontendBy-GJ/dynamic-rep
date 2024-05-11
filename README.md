@@ -1,18 +1,30 @@
 # DynamicRep
 
+## Table of contents
+
+- [Overview](#overview)
+  - [Motivation](#motivation)
+  - [Dynamic Rep Goal System](#dynamic-repo-goal-system)
+  - [Determining Reap Goal Target](#determining-reap-goal-target)
+  - [Dynamic Progression](#dynamic-progression)
+  - [Features](#features)
+- [Built With](#built-with)
+- [Get Started](#get-started)
+- [Feedback](#feedback)
+
 ## Overview
 
-The Exercise Logger is a personal project developed to help fitness enthusiasts track their workouts and progress effectively. Inspired by the dynamic rep goal system, this application aims to provide users with a seamless way to log their exercises and monitor their performance over time.
+DynamicRep is a personal project developed to help fitness enthusiasts track their workouts and progress effectively. Inspired by the dynamic rep goal system, this application aims to provide users with a seamless way to log their exercises and monitor their performance over time.
 
-## Motivation
+### Motivation
 
 As a fitness enthusiast myself, I found the traditional methods of tracking workouts, such as using the Notes app on my iPhone, to be cumbersome and disorganized. I needed a solution to simplify the tracking process. Thus, DynamicRep was born.
 
-## Dynamic Rep Goal System
+### Dynamic Rep Goal System
 
 DynamicRep utilizes a dynamic rep goal system to drive progress and results. Users set personalized rep goal targets for each exercise, aiming to achieve a specific total number of reps across all sets. This innovative approach encourages gradual progression and prevents overloading, leading to sustained improvements in strength and performance.
 
-## Determining Rep Goal Target
+### Determining Rep Goal Target
 
 To determine the rep goal target, users multiply the average number of reps (rep range you want to work in) by the total number of sets. Additionally, it's recommended to set the rep goal target slightly higher than the calculated value to accommodate fluctuations in performance.
 
@@ -28,7 +40,7 @@ To determine the rep goal target, users multiply the average number of reps (rep
 
 - 25 reps is the target for bench press.
 
-## Dynamic Progression
+### Dynamic Progression
 
 The dynamic aspect of the system comes into play when users achieve the rep goal target. Instead of immediately increasing the weight across all sets, users incrementally progress by increasing the weight on specific sets. This approach ensures gradual adaptation and prevents overloading.
 
@@ -52,7 +64,7 @@ The next time you bench you use 185 for set 1, 180 for sets 2 and 3 and aim for 
 - Set 3: 180 for 6 reps
 - Total reps = 23
 
-## Features
+### Features
 
 DynamicRep offers a comprehensive set of features to streamline workout tracking and enhance performance monitoring:
 
@@ -64,12 +76,27 @@ DynamicRep offers a comprehensive set of features to streamline workout tracking
 
 - Workout Plans: Access pre-designed workout plan, the full-body workout and suggested schedules for optimal training consistency.
 
-<img src="screenshots/dr-log-form.png" alt="DynamicRep log form" width="500" height="400">
-<img src="screenshots/dr-table.png" alt="DynamicRep log table" width="500" height="400">
+<img src="screenshots/dr-log-form.png" alt="DynamicRep log form" style="width: clamp(500px, 50vh, 100%); height: clamp(600px, 100%, 600px)" >
+<img src="screenshots/dr-table.png" alt="DynamicRep log table" style="width: clamp(500px, 50vh, 100%); height: clamp(500px, 50vh, 100%)">
+
+## Built With
+
+- [Next.js](https://nextjs.org/)
+- Typescript
+- [TailwindCSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Supabase](https://supabase.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Tanstack Table](https://tanstack.com/table/latest)
 
 ## Get Started
 
 Experience the power of [DynamicRep]() by visiting the website and creating an account today. Start logging your workouts and unlock the full potential of the dynamic rep goal system to transform your fitness journey.
+
+## Author
+
+- Frontend Mentor - [@FrontendBy-GJ](https://www.frontendmentor.io/profile/FrontendBy-GJ)
+- Portfolio - https://garciadev.netlify.app/
 
 ## Feedback
 
