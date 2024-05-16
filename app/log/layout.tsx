@@ -1,7 +1,7 @@
 import Navbar from '@/components/navbar';
 import SidebarNav from '@/components/sidebar-nav';
-import Link from 'next/link';
 import React from 'react';
+import { ViewTransitions } from 'next-view-transitions';
 
 const sidebarNavLinks = [
   {
@@ -20,7 +20,7 @@ const sidebarNavLinks = [
 
 export default function LogLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <ViewTransitions>
       <Navbar />
       <div className="px-4 md:px-6 xl:px-0 max-w-7xl mx-auto mt-6">
         <aside>
@@ -28,6 +28,6 @@ export default function LogLayout({ children }: { children: React.ReactNode }) {
         </aside>
         {children}
       </div>
-    </>
+    </ViewTransitions>
   );
 }

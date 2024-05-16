@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { Avatar, AvatarImage } from './ui/avatar';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { Button } from './ui/button';
 import { createClient } from '@/utils/supabase/server';
 import { signOut } from '@/app/login/actions';

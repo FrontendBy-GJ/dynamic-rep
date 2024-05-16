@@ -1,7 +1,7 @@
 import { Bebas_Neue } from 'next/font/google';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { FaChevronRight } from 'react-icons/fa';
 import Image, { StaticImageData } from 'next/image';
 import { LiaDumbbellSolid } from 'react-icons/lia';

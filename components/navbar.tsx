@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import Dropdown from './navDropdown';
 import { Button } from './ui/button';
 import Logo from './logo';

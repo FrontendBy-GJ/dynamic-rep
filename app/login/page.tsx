@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import manPosing from '/public/man-posing.webp';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import Logo from '@/components/logo';
 import LoginForm from './login-form';
 import { blackOps } from '@/lib/constants';
