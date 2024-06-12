@@ -1,9 +1,12 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import { Provider } from '@supabase/supabase-js';
 import { FaGithub } from 'react-icons/fa';
 import { loginWithOauth } from './actions';
+import withLoading, { WithLoadingProps } from '@/components/withLoading';
+import LoadingButton from '@/components/loading-button';
+
+const Button = withLoading(LoadingButton);
 
 type OAuthPoviders = {
   name: Provider;
@@ -24,7 +27,13 @@ export default function OAuthButtons() {
       {providers.map((provider) => (
         <Button
           key={provider.name}
-          onClick={async () => await loginWithOauth(provider.name)}
+          onClick={async (e) => {
+            const target = e.currentTarget as typeof e.currentTarget &
+              WithLoadingProps;
+            target.toggleLoading();
+            await loginWithOauth(provider.name);
+            target.toggleLoading();
+          }}
           className="flex items-center gap-2 w-full"
         >
           {provider.icon}
