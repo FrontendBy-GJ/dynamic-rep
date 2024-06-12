@@ -8,7 +8,7 @@ export interface WithLoadingProps {
 const withLoading = <P extends object>(
   WrappedComponent: ComponentType<P & WithLoadingProps>
 ) => {
-  return (props: P) => {
+  const WithLoadingComponent = (props: P) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const toggleLoading = () => setIsLoading((prevLoading) => !prevLoading);
@@ -21,6 +21,15 @@ const withLoading = <P extends object>(
       />
     );
   };
+
+  WithLoadingComponent.displayName = `WithLoadingComponent(${getDisplayName(
+    WrappedComponent
+  )})`;
+  return WithLoadingComponent;
+};
+
+const getDisplayName = (WrappedComponent: ComponentType<any>) => {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 };
 
 export default withLoading;
