@@ -19,7 +19,6 @@ const withLoading = <P extends object>(
       if (props.onClick) {
         toggleLoading();
         await props.onClick(event);
-        toggleLoading();
       }
     };
 
