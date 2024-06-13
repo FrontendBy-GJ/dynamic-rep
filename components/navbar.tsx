@@ -5,6 +5,8 @@ import Logo from './logo';
 import { createClient } from '@/utils/supabase/server';
 import ThemeDropdown from './themes';
 import { blackOps } from '@/lib/constants';
+import { Dumbbell, NotebookPen } from 'lucide-react';
+import { signOut } from '@/app/login/actions';
 
 export default async function Navbar() {
   const supabase = createClient();
@@ -22,14 +24,54 @@ export default async function Navbar() {
           </h1>
         </Link>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
           <ThemeDropdown />
           {!user ? (
             <Link href={'/login'}>
-              <Button size={'sm'}>Sign In</Button>
+              <Button
+                size={'sm'}
+                className="shadow-xl active:scale-95 active:translate-y-0.5 active:shadow-none"
+              >
+                Sign In
+              </Button>
             </Link>
           ) : (
-            <Dropdown />
+            <>
+              <menu className="hidden md:flex md:items-center md:gap-4">
+                <li>
+                  <Button variant={'link'} size={'sm'}>
+                    <Link href={'/log'} className="flex items-center gap-2">
+                      Log
+                      <NotebookPen aria-hidden="true" />
+                    </Link>
+                  </Button>
+                </li>
+                <li>
+                  <Button variant={'link'} size={'sm'}>
+                    <Link
+                      href={'/log/workout'}
+                      className="flex items-center gap-2"
+                    >
+                      Workout Plan
+                      <Dumbbell aria-hidden="true" />
+                    </Link>
+                  </Button>
+                </li>
+                <li>
+                  <form action={signOut}>
+                    <Button
+                      size={'sm'}
+                      className="shadow-xl active:scale-95 active:translate-y-0.5 active:shadow-none"
+                    >
+                      Sign out
+                    </Button>
+                  </form>
+                </li>
+              </menu>
+              <div className="md:hidden">
+                <Dropdown />
+              </div>
+            </>
           )}
         </div>
       </section>

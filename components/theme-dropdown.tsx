@@ -16,16 +16,16 @@ export default function ThemeDropdown() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="rounded-full">
         <Button size={'icon'} variant={'ghost'} name="Theme">
-          <SunMoon aria-hidden="true" />
+          <SunMoon aria-hidden="true" className="size-8" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent side="bottom" sideOffset={10} align="end">
         {themes.map((theme) => (
           <DropdownMenuItem
             key={theme}
-            className="capitalize"
+            className="capitalize py-3 cursor-pointer"
             onClick={() => setTheme(theme)}
           >
             {theme}

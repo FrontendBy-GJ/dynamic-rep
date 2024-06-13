@@ -6,6 +6,7 @@ import { FaChevronRight } from 'react-icons/fa';
 import Image, { StaticImageData } from 'next/image';
 import { LiaDumbbellSolid } from 'react-icons/lia';
 import { createClient } from '@/utils/supabase/server';
+import { NotebookPen } from 'lucide-react';
 
 export const bebasNeue = Bebas_Neue({ subsets: ['latin'], weight: '400' });
 
@@ -67,13 +68,23 @@ export default async function Section({
         </p>
         {center ? null : children}
         {center ? null : !user ? (
-          <Link href={'/login'}>
-            <Button variant={'link'} className="flex items-center gap-2">
+          <Link href={'/login'} className="block w-fit">
+            <Button variant={'link'} className="flex items-center gap-2 group">
               Sign up
-              <FaChevronRight aria-hidden="true" />
+              <FaChevronRight
+                aria-hidden="true"
+                className="group-hover:translate-x-1.5 group-hover:duration-300 group-focus-visible:translate-x-1.5 duration-300 transition-transform"
+              />
             </Button>
           </Link>
-        ) : null}
+        ) : (
+          <Link href={'/log'} className="block w-fit">
+            <Button className="flex items-center gap-2 shadow-xl active:scale-95 active:translate-y-0.5 active:shadow-none">
+              Start Tracking
+              <NotebookPen aria-hidden="true" />
+            </Button>
+          </Link>
+        )}
       </div>
       {center && children}
       {center ? null : (
@@ -90,9 +101,12 @@ export default async function Section({
       {center &&
         (!user ? (
           <Link href={'/login'} className="self-start">
-            <Button variant={'link'} className="flex items-center gap-2">
+            <Button variant={'link'} className="flex items-center gap-2 group">
               Sign up
-              <FaChevronRight aria-hidden="true" />
+              <FaChevronRight
+                aria-hidden="true"
+                className="group-hover:translate-x-1.5 group-hover:duration-300 group-focus-visible:translate-x-1.5 duration-300 transition-transform"
+              />
             </Button>
           </Link>
         ) : null)}

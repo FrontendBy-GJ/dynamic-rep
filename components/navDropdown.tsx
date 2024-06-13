@@ -12,6 +12,7 @@ import { Button } from './ui/button';
 import { createClient } from '@/utils/supabase/server';
 import { signOut } from '@/app/login/actions';
 import { blackOps } from '@/lib/constants';
+import { ChevronDownIcon } from 'lucide-react';
 
 export default async function Dropdown() {
   const supabase = createClient();
@@ -27,7 +28,8 @@ export default async function Dropdown() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="rounded-full">
+      <DropdownMenuTrigger className="p-1 rounded-full flex flex-row-reverse gap-1 items-center group/trigger focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0">
+        <ChevronDownIcon className="group-aria-expanded/trigger:rotate-180 duration-500 transition-transform" />
         {data?.image_url ? (
           <Avatar>
             <AvatarImage src={data?.image_url || ''} />
@@ -42,27 +44,38 @@ export default async function Dropdown() {
           </Avatar>
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="right" sideOffset={10} className="mt-5">
-        <DropdownMenuLabel className="text-center">
+      <DropdownMenuContent
+        side="bottom"
+        sideOffset={10}
+        align="end"
+        className="w-52"
+      >
+        <DropdownMenuLabel className="text-center tracking-wider text-muted-foreground">
           {!data?.display_name ? data?.email : data.display_name}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <div className="space-y-3">
-          <DropdownMenuItem asChild className="cursor-pointer">
-            <Link href={'/log'}>Log</Link>
+        <Link href={'/log'} className="block">
+          <DropdownMenuItem className="py-4 cursor-pointer">
+            Log
           </DropdownMenuItem>
-          <DropdownMenuItem asChild className="cursor-pointer">
-            <Link href={'/log/workout'}>Workout</Link>
+        </Link>
+        <Link href={'/log/workout'} className="block">
+          <DropdownMenuItem className="py-4 cursor-pointer">
+            Workout Plan
           </DropdownMenuItem>
-          <DropdownMenuItem asChild className="cursor-pointer">
-            <Link href={'/log/stats'}>Stats</Link>
+        </Link>
+        <Link href={'/log/stats'} className="block">
+          <DropdownMenuItem className="py-4 cursor-pointer">
+            Stats
           </DropdownMenuItem>
-          <form action={signOut}>
-            <DropdownMenuItem className="w-full" asChild>
-              <Button className="cursor-pointer w-full">Sign Out</Button>
-            </DropdownMenuItem>
-          </form>
-        </div>
+        </Link>
+        <form action={signOut}>
+          <DropdownMenuItem className="w-full" asChild>
+            <Button className="cursor-pointer w-full transition">
+              Sign Out
+            </Button>
+          </DropdownMenuItem>
+        </form>
       </DropdownMenuContent>
     </DropdownMenu>
   );
