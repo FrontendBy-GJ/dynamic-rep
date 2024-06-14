@@ -2,7 +2,16 @@ import { type NextRequest } from 'next/server';
 import { updateSession } from '@/utils/supabase/middleware';
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request);
+  // Update session with Supabase middleware
+  const response = await updateSession(request);
+
+  // Extract the current path from the request URL
+  const currentPath = request.nextUrl.pathname;
+
+  // Set the current path in the headers
+  response.headers.set('x-current-path', currentPath);
+
+  return response;
 }
 
 export const config = {

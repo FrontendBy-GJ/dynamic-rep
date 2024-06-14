@@ -8,11 +8,17 @@ import { blackOps } from '@/lib/constants';
 import { Dumbbell, NotebookPen } from 'lucide-react';
 import { signOut } from '@/app/login/actions';
 
-export default async function Navbar() {
+type NavbarProps = {
+  currentPath?: string;
+};
+
+export default async function Navbar({ currentPath }: NavbarProps) {
   const supabase = createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  const isLogPage = currentPath?.startsWith('/log');
 
   return (
     <nav className={`h-16`}>
@@ -38,25 +44,29 @@ export default async function Navbar() {
           ) : (
             <>
               <menu className="hidden md:flex md:items-center md:gap-4">
-                <li>
-                  <Button variant={'link'} size={'sm'}>
-                    <Link href={'/log'} className="flex items-center gap-2">
-                      Log
-                      <NotebookPen aria-hidden="true" />
-                    </Link>
-                  </Button>
-                </li>
-                <li>
-                  <Button variant={'link'} size={'sm'}>
-                    <Link
-                      href={'/log/workout'}
-                      className="flex items-center gap-2"
-                    >
-                      Workout Plan
-                      <Dumbbell aria-hidden="true" />
-                    </Link>
-                  </Button>
-                </li>
+                {!isLogPage && (
+                  <>
+                    <li>
+                      <Button variant={'link'} size={'sm'}>
+                        <Link href={'/log'} className="flex items-center gap-2">
+                          Log
+                          <NotebookPen aria-hidden="true" />
+                        </Link>
+                      </Button>
+                    </li>
+                    <li>
+                      <Button variant={'link'} size={'sm'}>
+                        <Link
+                          href={'/log/workout'}
+                          className="flex items-center gap-2"
+                        >
+                          Workout Plan
+                          <Dumbbell aria-hidden="true" />
+                        </Link>
+                      </Button>
+                    </li>
+                  </>
+                )}
                 <li>
                   <form action={signOut}>
                     <Button
