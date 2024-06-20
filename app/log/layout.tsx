@@ -26,7 +26,7 @@ export default function LogLayout({ children }: { children: React.ReactNode }) {
   return (
     <ViewTransitions>
       <Navbar currentPath={currentPath} />
-      <div className="px-4 md:px-6 xl:px-0 max-w-7xl mx-auto mt-6">
+      <div className="px-4 lg:px-6 max-w-[100rem] mx-auto mt-6">
         <aside>
           <SidebarNav sidebarLinks={sidebarNavLinks} />
         </aside>

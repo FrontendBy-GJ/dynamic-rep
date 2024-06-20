@@ -21,10 +21,10 @@ export default async function Navbar({ currentPath }: NavbarProps) {
   const isLogPage = currentPath?.startsWith('/log');
 
   return (
-    <nav className={`h-16`}>
-      <section className="max-w-7xl mx-auto px-4 md:px-6 xl:px-0 flex justify-between items-center h-full">
+    <nav className="h-16">
+      <section className="max-w-[100rem] mx-auto px-4 lg:px-6 flex justify-between items-center h-full">
         <Link href={'/'} aria-label="DynamicRep">
-          <h1 className={`${blackOps.className} text-2xl md:text-3xl`}>
+          <h1 className={`${blackOps.className} text-2xl lg:text-3xl`}>
             <span className="sr-only">DynamicRep</span>
             <Logo />
           </h1>

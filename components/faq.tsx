@@ -8,22 +8,26 @@ import { Button } from '@/components/ui/button';
 
 export default function FAQ() {
   return (
-    <section className="space-y-8 md:space-y-12 py-10 lg:py-20">
+    <section className="space-y-8 md:space-y-12 py-10 lg:py-24 max-w-7xl mx-auto px-4 md:px-6 xl:px-0">
       <div className="text-center space-y-4">
         <h3 className="text-3xl font-semibold xl:text-4xl">FAQs</h3>
-        <p className="text-pretty text-sm lg:text-base">
+        <p className="text-pretty text-lg">
           Answer common questions about the exercise logger and the dynamic rep
           goal system.
         </p>
       </div>
 
-      <Accordion type="single" collapsible className="max-w-2xl mx-auto">
+      <Accordion type="single" collapsible className="max-w-3xl mx-auto">
         {faqs.map((faq, idx) => (
-          <AccordionItem key={idx} value={`item-${idx + 1}`} className="text-">
-            <AccordionTrigger className="text-sm md:text-base text-start">
+          <AccordionItem
+            key={idx}
+            value={`item-${idx + 1}`}
+            className="text-lg"
+          >
+            <AccordionTrigger className="text-start">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="leading-6">
+            <AccordionContent className="text-lg">
               {faq.answer}
             </AccordionContent>
           </AccordionItem>
@@ -32,9 +36,7 @@ export default function FAQ() {
 
       <div className="space-y-4 text-center">
         <h4 className="text-2xl font-semibold">Contact Us</h4>
-        <p className="text-sm lg:text-base">
-          Have more questions? Get in touch with us.
-        </p>
+        <p className="text-lg">Have more questions? Get in touch with us.</p>
         <Button>Contact</Button>
       </div>
     </section>

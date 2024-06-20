@@ -26,7 +26,7 @@ export default function RepGoalList({
         <h3 className="font-semibold text-xl text-pretty xl:text-2xl">
           {title}
         </h3>
-        <p className="text-sm lg:text-base">{paragraph}</p>
+        <p className="text-pretty">{paragraph}</p>
       </div>
     </li>
   );

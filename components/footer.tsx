@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer className={`py-10 text-center`}>
-      <section className="max-w-7xl mx-auto md:px-6">
+      <section className="max-w-[100rem] mx-auto px-4 lg:px-6">
         <div className="space-y-10 lg:flex justify-between items-center lg:space-y-0">
           <div
             className={`${blackOps.className} text-3xl w-fit mx-auto lg:mx-0`}
