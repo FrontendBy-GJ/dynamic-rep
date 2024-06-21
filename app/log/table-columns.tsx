@@ -49,7 +49,7 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
         .map((val) => val.charAt(0).toUpperCase() + val.slice(1))
         .join(' ');
       return (
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center justify-between gap-4">
           {formatted}
           <div className="flex items-center gap-2">
             <EditExerciseLogForm exerciseData={row.original} />
