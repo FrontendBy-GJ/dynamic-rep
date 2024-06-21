@@ -3,11 +3,17 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown, Trash2 } from 'lucide-react';
+import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 import EditExerciseLogForm from './edit-exercise-log-form';
 import { deleteExercise } from './actions';
 import { toast } from '@/components/ui/use-toast';
 import { blackOps } from '@/lib/constants';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export type TableColumnsProps = {
   id: string;
@@ -49,21 +55,27 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
         .map((val) => val.charAt(0).toUpperCase() + val.slice(1))
         .join(' ');
       return (
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center justify- gap-4">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="size-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="size-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent side="right" sideOffset={10} align="start">
+              <DropdownMenuItem className="py-4">
+                <EditExerciseLogForm exerciseData={row.original} />
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="py-4"
+                onClick={() => handleDelete(row.original.id)}
+              >
+                Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           {formatted}
-          <div className="flex items-center gap-2">
-            <EditExerciseLogForm exerciseData={row.original} />
-
-            <Button
-              size={'icon'}
-              variant={'ghost'}
-              aria-label="Delete"
-              title="Delete"
-              onClick={() => handleDelete(row.original.id)}
-            >
-              <Trash2 aria-hidden="true" className="size-4" />
-            </Button>
-          </div>
         </div>
       );
     },

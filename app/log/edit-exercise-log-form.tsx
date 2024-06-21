@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
@@ -9,7 +8,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { Pencil } from 'lucide-react';
 import { useState } from 'react';
 import EditExerciseFormContent from './edit-exercise-form-content';
 import { useFieldArray, useForm } from 'react-hook-form';
@@ -145,17 +143,7 @@ export default function EditExerciseLogForm({
 
   return (
     <Sheet open={isEditFormOpen} onOpenChange={setIsEditFormOpen}>
-      <SheetTrigger asChild>
-        <Button
-          aria-label="Edit"
-          title="Edit"
-          type="button"
-          size={'icon'}
-          variant={'ghost'}
-        >
-          <Pencil aria-hidden="true" className="size-4" />
-        </Button>
-      </SheetTrigger>
+      <SheetTrigger>Edit</SheetTrigger>
       <SheetContent className="overflow-y-scroll w-full md:w-auto">
         <SheetHeader>
           <SheetTitle>Edit</SheetTitle>
