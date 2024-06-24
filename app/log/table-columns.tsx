@@ -3,11 +3,18 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown, Trash2 } from 'lucide-react';
+import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 import EditExerciseLogForm from './edit-exercise-log-form';
 import { deleteExercise } from './actions';
 import { toast } from '@/components/ui/use-toast';
 import { blackOps } from '@/lib/constants';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Sheet, SheetTrigger } from '@/components/ui/sheet';
 
 export type TableColumnsProps = {
   id: string;
@@ -40,6 +47,45 @@ const handleDelete = async (id: string) => {
 
 export const tableColumns: ColumnDef<TableColumnsProps>[] = [
   {
+    id: 'actions',
+    cell: ({ row }) => {
+      const exercise = row.original;
+
+      return (
+        <Sheet>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="size-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="size-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              side="right"
+              sideOffset={10}
+              align="start"
+              className="space-y-4 py-3"
+            >
+              <DropdownMenuItem asChild className="w-full cursor-pointer">
+                <SheetTrigger asChild className="text-left">
+                  <Button>Edit</Button>
+                </SheetTrigger>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                asChild
+                className="w-full cursor-pointer"
+                onClick={() => handleDelete(exercise.id)}
+              >
+                <Button variant={'destructive'}>Delete</Button>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <EditExerciseLogForm exerciseData={exercise} />
+        </Sheet>
+      );
+    },
+  },
+  {
     accessorKey: 'exercise',
     header: 'Exercise',
     cell: ({ row }) => {
@@ -48,24 +94,7 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
         .split(' ')
         .map((val) => val.charAt(0).toUpperCase() + val.slice(1))
         .join(' ');
-      return (
-        <div className="flex items-center justify-between gap-4">
-          {formatted}
-          <div className="flex items-center gap-2">
-            <EditExerciseLogForm exerciseData={row.original} />
-
-            <Button
-              size={'icon'}
-              variant={'ghost'}
-              aria-label="Delete"
-              title="Delete"
-              onClick={() => handleDelete(row.original.id)}
-            >
-              <Trash2 aria-hidden="true" className="size-4" />
-            </Button>
-          </div>
-        </div>
-      );
+      return <div>{formatted}</div>;
     },
   },
   {
