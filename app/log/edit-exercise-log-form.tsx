@@ -1,14 +1,12 @@
 'use client';
 
 import {
-  Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from '@/components/ui/sheet';
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import EditExerciseFormContent from './edit-exercise-form-content';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { editFormData } from './actions';
@@ -39,10 +37,11 @@ export type EditFormProps = {
 
 export default function EditExerciseLogForm({
   exerciseData,
+  setIsEditFormOpen,
 }: {
   exerciseData: ExerciseDataProps;
+  setIsEditFormOpen: Dispatch<SetStateAction<boolean>>;
 }) {
-  const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   const router = useRouter();
 
   const {
@@ -142,33 +141,30 @@ export default function EditExerciseLogForm({
   };
 
   return (
-    <Sheet open={isEditFormOpen} onOpenChange={setIsEditFormOpen}>
-      <SheetTrigger>Edit</SheetTrigger>
-      <SheetContent className="overflow-y-scroll w-full md:w-auto">
-        <SheetHeader>
-          <SheetTitle>Edit</SheetTitle>
-          <SheetDescription>
-            Set the correct reps, sets, weight for this exercise.
-          </SheetDescription>
-        </SheetHeader>
+    <SheetContent className="overflow-y-scroll w-full md:w-auto">
+      <SheetHeader>
+        <SheetTitle>Edit</SheetTitle>
+        <SheetDescription>
+          Set the correct reps, sets, weight for this exercise.
+        </SheetDescription>
+      </SheetHeader>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <EditExerciseFormContent
-            register={register}
-            errors={errors}
-            isSubmitting={isSubmitting}
-            weightFields={weightFields}
-            addWeight={addWeight}
-            removeWeight={removeWeight}
-            repsFields={repsFields}
-            addReps={addReps}
-            removeReps={removeReps}
-            clearErrors={clearErrors}
-            setValue={setValue}
-            getValues={getValues}
-          />
-        </form>
-      </SheetContent>
-    </Sheet>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <EditExerciseFormContent
+          register={register}
+          errors={errors}
+          isSubmitting={isSubmitting}
+          weightFields={weightFields}
+          addWeight={addWeight}
+          removeWeight={removeWeight}
+          repsFields={repsFields}
+          addReps={addReps}
+          removeReps={removeReps}
+          clearErrors={clearErrors}
+          setValue={setValue}
+          getValues={getValues}
+        />
+      </form>
+    </SheetContent>
   );
 }

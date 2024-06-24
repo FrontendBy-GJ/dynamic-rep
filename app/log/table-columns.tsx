@@ -14,6 +14,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Sheet, SheetTrigger } from '@/components/ui/sheet';
+import { useState } from 'react';
 
 export type TableColumnsProps = {
   id: string;
@@ -46,6 +48,49 @@ const handleDelete = async (id: string) => {
 
 export const tableColumns: ColumnDef<TableColumnsProps>[] = [
   {
+    id: 'actions',
+    cell: ({ row }) => {
+      const [isEditFormOpen, setIsEditFormOpen] = useState(false);
+      const exercise = row.original;
+
+      return (
+        <Sheet open={isEditFormOpen} onOpenChange={setIsEditFormOpen}>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="size-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="size-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              side="right"
+              sideOffset={10}
+              align="start"
+              className="space-y-4 py-3"
+            >
+              <DropdownMenuItem asChild className="w-full cursor-pointer">
+                <SheetTrigger asChild className="text-left">
+                  <Button>Edit</Button>
+                </SheetTrigger>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                asChild
+                className="w-full cursor-pointer"
+                onClick={() => handleDelete(exercise.id)}
+              >
+                <Button variant={'destructive'}>Delete</Button>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <EditExerciseLogForm
+            exerciseData={exercise}
+            setIsEditFormOpen={setIsEditFormOpen}
+          />
+        </Sheet>
+      );
+    },
+  },
+  {
     accessorKey: 'exercise',
     header: 'Exercise',
     cell: ({ row }) => {
@@ -54,30 +99,7 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
         .split(' ')
         .map((val) => val.charAt(0).toUpperCase() + val.slice(1))
         .join(' ');
-      return (
-        <div className="flex items-center justify- gap-4">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="size-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="size-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent side="right" sideOffset={10} align="start">
-              <DropdownMenuItem className="py-4">
-                <EditExerciseLogForm exerciseData={row.original} />
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                className="py-4"
-                onClick={() => handleDelete(row.original.id)}
-              >
-                Delete
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          {formatted}
-        </div>
-      );
+      return <div>{formatted}</div>;
     },
   },
   {
