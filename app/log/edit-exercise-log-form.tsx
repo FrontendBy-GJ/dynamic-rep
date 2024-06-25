@@ -11,9 +11,9 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { editFormData } from './actions';
 import { useRouter } from 'next/navigation';
 import { toast } from '@/components/ui/use-toast';
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
-type ExerciseDataProps = {
+export type ExerciseDataProps = {
   id: string;
   exercise: string;
   sets: number;
@@ -37,10 +37,11 @@ export type EditFormProps = {
 
 export default function EditExerciseLogForm({
   exerciseData,
+  setIsEditFormOpen,
 }: {
   exerciseData: ExerciseDataProps;
+  setIsEditFormOpen: Dispatch<SetStateAction<boolean>>;
 }) {
-  const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   const router = useRouter();
 
   const {

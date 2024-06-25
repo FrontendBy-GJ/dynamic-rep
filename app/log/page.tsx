@@ -1,4 +1,3 @@
-import Navbar from '@/components/navbar';
 import { createClient } from '@/utils/supabase/server';
 import ExerciseLogForm from './exercise-log-form';
 import LogTable from './table';
