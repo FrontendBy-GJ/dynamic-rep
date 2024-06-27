@@ -24,6 +24,7 @@ export const getFormData = async (values: FormProps) => {
           total_reps: values.total_reps,
           weight_per_set: values.weight_per_set.map((val) => val.weight),
           reps_per_set: values.reps_per_set.map((val) => val.reps),
+          notes: values.notes,
         },
       ])
       .select();
@@ -52,6 +53,7 @@ export const editFormData = async (values: EditFormProps) => {
         total_reps: values.total_reps,
         weight_per_set: values.weight_per_set.map((val) => val.weight),
         reps_per_set: values.reps_per_set.map((val) => val.reps),
+        notes: values.notes,
       })
       .eq('id', values.id)
       .select();

@@ -22,6 +22,7 @@ export type ExerciseDataProps = {
   reps_per_set: number[];
   rep_goal: number | null;
   total_reps: number | null;
+  notes?: string | null;
 };
 
 export type EditFormProps = {
@@ -33,6 +34,7 @@ export type EditFormProps = {
   reps_per_set: { reps: number }[];
   rep_goal: number | null;
   total_reps: number | null;
+  notes?: string | null;
 };
 
 export default function EditExerciseLogForm({
@@ -59,6 +61,7 @@ export default function EditExerciseLogForm({
       type: exerciseData.type,
       rep_goal: exerciseData.rep_goal,
       sets: exerciseData.sets,
+      notes: exerciseData.notes,
       weight_per_set: exerciseData.weight_per_set.map((weight) => ({
         weight: weight,
       })) as unknown as [],
@@ -107,6 +110,7 @@ export default function EditExerciseLogForm({
       reps_per_set: repsPerSet,
       total_reps: totalReps,
       type: values.type,
+      notes: values.notes,
     };
 
     if (

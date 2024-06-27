@@ -14,6 +14,7 @@ export type Database = {
           created_at: string
           exercise: string
           id: string
+          notes: string | null
           profile_id: string | null
           rep_goal: number | null
           reps_per_set: number[]
@@ -27,6 +28,7 @@ export type Database = {
           created_at?: string
           exercise?: string
           id?: string
+          notes?: string | null
           profile_id?: string | null
           rep_goal?: number | null
           reps_per_set: number[]
@@ -40,6 +42,7 @@ export type Database = {
           created_at?: string
           exercise?: string
           id?: string
+          notes?: string | null
           profile_id?: string | null
           rep_goal?: number | null
           reps_per_set?: number[]

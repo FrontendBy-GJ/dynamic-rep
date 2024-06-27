@@ -28,6 +28,7 @@ export type FormProps = {
   weight_per_set: { weight: number }[];
   reps_per_set: { reps: number }[];
   total_reps: number | null;
+  notes: string | null;
 };
 
 export default function ExerciseLogForm() {
@@ -45,9 +46,17 @@ export default function ExerciseLogForm() {
   } = useForm<FormProps>({
     defaultValues: {
       exercise: '',
-      type: 'None' || 'A' || 'B',
+      type:
+        'None' ||
+        'A' ||
+        'B' ||
+        'Upper 1' ||
+        'Lower 1' ||
+        'Upper 2' ||
+        'Lower 2',
       rep_goal: 0 || null,
       sets: '' as unknown as number,
+      notes: '',
       weight_per_set: [
         {
           weight: '' as unknown as number,
@@ -99,6 +108,7 @@ export default function ExerciseLogForm() {
       reps_per_set: repsPerSet,
       total_reps: totalReps,
       type: values.type,
+      notes: values.notes,
     };
 
     if (
@@ -131,7 +141,7 @@ export default function ExerciseLogForm() {
 
   return (
     <Sheet open={isFormOpen} onOpenChange={setIsFormOpen}>
-      <SheetTrigger asChild className="max-w-sm">
+      <SheetTrigger asChild className="w-full sm:w-auto">
         <Button className="flex items-center gap-2">
           <CirclePlus aria-hidden="true" aria-label="Add Exercise" /> Add
           Exercise

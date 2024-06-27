@@ -15,6 +15,7 @@ type Workout = {
     exercise: string;
     sets: number;
     reps: number[];
+    link?: string;
   }[];
 };
 
@@ -25,15 +26,21 @@ export default function WorkoutTable({ workout }: { workout: Workout[] }) {
         const tableHeaders = ['Exercise', 'Sets', 'Reps'];
 
         return (
-          <div key={w.type} className="max-w-xl w-full mx-auto lg:mx-0">
+          <div key={w.type} className="w-full">
             <h2
-              className={`${blackOps.className} text-xl text-center lg:text-2xl mb-4`}
+              className={`${blackOps.className} text-xl text-center md:text-2xl mb-4`}
             >
               Workout{' '}
               <span
                 className={cn(
-                  w.type === 'A' && 'text-red-500',
-                  w.type === 'B' && 'text-blue-500'
+                  (w.type === 'A' ||
+                    w.type === 'Upper 1' ||
+                    w.type === 'Lower 1') &&
+                    'text-red-500',
+                  (w.type === 'B' ||
+                    w.type === 'Upper 2' ||
+                    w.type === 'Lower 2') &&
+                    'text-blue-500'
                 )}
               >
                 {w.type}
@@ -59,13 +66,23 @@ export default function WorkoutTable({ workout }: { workout: Workout[] }) {
               <TableBody>
                 {w.exercises.map((exercise, index) => (
                   <TableRow key={index} className="h-16">
-                    <TableCell className="capitalize">
-                      {exercise.exercise}
+                    <TableCell className="capitalize text-balance">
+                      {exercise.link ? (
+                        <a
+                          className="underline underline-offset-8"
+                          href={exercise.link}
+                          target="_blank"
+                        >
+                          {exercise.exercise}
+                        </a>
+                      ) : (
+                        exercise.exercise
+                      )}
                     </TableCell>
                     <TableCell className="text-center">
                       {exercise.sets}
                     </TableCell>
-                    <TableCell className="text-center">
+                    <TableCell className="text-center w-[120px]">
                       {exercise.reps.join(' - ')}
                     </TableCell>
                   </TableRow>

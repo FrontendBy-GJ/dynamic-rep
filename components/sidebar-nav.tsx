@@ -14,6 +14,7 @@ export default function SidebarNav({
   }[];
 }) {
   const pathname = usePathname();
+
   return (
     <menu className="flex items-center border-b">
       {sidebarLinks.map((link) => (

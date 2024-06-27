@@ -70,8 +70,8 @@ export default function LogTable<TData, TValue>({
   });
 
   return (
-    <div className="pt-4 pb-8">
-      <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between pb-8">
+    <div className="pb-8">
+      <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between py-4 mb-8">
         <div className="flex items-center gap-4 w-full">
           <Input
             placeholder="Filter exercises..."

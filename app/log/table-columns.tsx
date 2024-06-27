@@ -70,14 +70,21 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
     accessorKey: 'type',
     header: () => <div className="text-center">Type</div>,
     cell: ({ row }) => {
-      const type = row.getValue('type') as string;
+      let type = row.getValue('type') as string;
+      type =
+        type.length > 2
+          ? type
+              .split(' ')
+              .map((v) => v.charAt(0))
+              .join('')
+          : type;
       return (
         <div
           className={cn(
             blackOps.className,
             'text-lg text-center',
-            type === 'A' && 'text-red-500',
-            type === 'B' && 'text-blue-500'
+            (type === 'A' || type === 'U1' || type === 'L1') && 'text-red-500',
+            (type === 'B' || type === 'U2' || type === 'L2') && 'text-blue-500'
           )}
         >
           {type}
@@ -117,7 +124,7 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
     header: () => <div className="text-center">Weight</div>,
     cell: ({ row }) => {
       const weight = row.getValue('weight_per_set') as number[];
-      const formatted = weight.join(' / ');
+      const formatted = weight.join(' - ');
       return <div className="text-center">{formatted}</div>;
     },
   },
@@ -126,7 +133,7 @@ export const tableColumns: ColumnDef<TableColumnsProps>[] = [
     header: () => <div className="text-center">Reps</div>,
     cell: ({ row }) => {
       const reps = row.getValue('reps_per_set') as number[];
-      const formatted = reps.join(' / ');
+      const formatted = reps.join(' - ');
       return <div className="text-center">{formatted}</div>;
     },
   },

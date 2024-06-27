@@ -23,6 +23,7 @@ import {
   UseFormSetValue,
 } from 'react-hook-form';
 import { EditFormProps } from './edit-exercise-log-form';
+import { Textarea } from '@/components/ui/textarea';
 
 type EditFormContentProps = {
   register: UseFormRegister<EditFormProps>;
@@ -65,6 +66,7 @@ export default function EditExerciseFormContent({
           )}
         </div>
         <Input
+          disabled={isSubmitting}
           id="exercise"
           placeholder="E.g. Overhead Press"
           {...register('exercise', {
@@ -88,11 +90,22 @@ export default function EditExerciseFormContent({
           )}
         </div>
         <Select
+          disabled={isSubmitting}
           value={getValues('type') || undefined}
           onValueChange={(type) => {
             if (type) {
               clearErrors('type');
-              setValue('type', type as 'None' | 'A' | 'B');
+              setValue(
+                'type',
+                type as
+                  | 'None'
+                  | 'A'
+                  | 'B'
+                  | 'Upper 1'
+                  | 'Lower 1'
+                  | 'Upper 2'
+                  | 'Lower 2'
+              );
             }
           }}
         >
@@ -100,17 +113,19 @@ export default function EditExerciseFormContent({
             <SelectValue placeholder="Select Type" />
           </SelectTrigger>
           <SelectContent>
-            {['A', 'B', 'None'].map((type) => (
-              <SelectItem
-                key={type}
-                value={type}
-                {...register('type', {
-                  required: 'Please Select Type',
-                })}
-              >
-                {type}
-              </SelectItem>
-            ))}
+            {['A', 'B', 'Upper 1', 'Lower 1', 'Upper 2', 'Lower 2', 'None'].map(
+              (type) => (
+                <SelectItem
+                  key={type}
+                  value={type}
+                  {...register('type', {
+                    required: 'Please Select Type',
+                  })}
+                >
+                  {type}
+                </SelectItem>
+              )
+            )}
           </SelectContent>
         </Select>
       </div>
@@ -125,6 +140,7 @@ export default function EditExerciseFormContent({
           )}
         </div>
         <Input
+          disabled={isSubmitting}
           type="number"
           id="rep_goal"
           {...register('rep_goal', {
@@ -144,6 +160,7 @@ export default function EditExerciseFormContent({
           )}
         </div>
         <Input
+          disabled={isSubmitting}
           type="number"
           id="sets"
           {...register('sets', {
@@ -171,6 +188,7 @@ export default function EditExerciseFormContent({
             </div>
             <div className="flex items-center gap-4">
               <Input
+                disabled={isSubmitting}
                 type="number"
                 id={`weight${index + 1}`}
                 {...register(`weight_per_set.${index}.weight`, {
@@ -221,6 +239,7 @@ export default function EditExerciseFormContent({
             </div>
             <div className="flex items-center gap-4">
               <Input
+                disabled={isSubmitting}
                 type="number"
                 id={`reps${index + 1}`}
                 {...register(`reps_per_set.${index}.reps`, {
@@ -252,6 +271,14 @@ export default function EditExerciseFormContent({
           Add Reps
         </Button>
       </div>
+
+      <Textarea
+        id="notes"
+        {...register('notes')}
+        placeholder="Add notes"
+        className="resize-none mt-4"
+        disabled={isSubmitting}
+      />
 
       <SheetFooter>
         <Button type="submit" disabled={isSubmitting} className="w-full mt-4">
