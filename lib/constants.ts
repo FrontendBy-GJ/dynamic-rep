@@ -8,7 +8,7 @@ export const bebasNeue = Bebas_Neue({ subsets: ['latin'], weight: '400' });
 
 export const protectedPaths = ['/log', '/log/workout', '/log/stats'];
 
-export const FULLBODY_A_B_WORKOUT = [
+export const FULL_BODY_A_B_WORKOUT = [
   {
     type: 'A',
     exercises: [
@@ -41,7 +41,7 @@ export const FULLBODY_A_B_WORKOUT = [
   },
 ];
 
-export const FULLBODY_A_B_SCHEDULE_1 = [
+export const FULL_BODY_A_B_SCHEDULE_1 = [
   { day: 'Monday', activity: 'A' },
   { day: 'Tuesday', activity: 'B' },
   { day: 'Wednesday', activity: 'rest' },
@@ -50,7 +50,7 @@ export const FULLBODY_A_B_SCHEDULE_1 = [
   { day: 'Saturday', activity: 'rest' },
   { day: 'Sunday', activity: 'rest' },
 ];
-export const FULLBODY_A_B_SCHEDULE_2 = [
+export const FULL_BODY_A_B_SCHEDULE_2 = [
   { day: 'Monday', activity: 'A' },
   { day: 'Tuesday', activity: 'rest' },
   { day: 'Wednesday', activity: 'B' },
@@ -69,15 +69,16 @@ export const UPPER_LOWER_SPLIT = [
       { exercise: 'Dumbbell Overhead Press', sets: 3, reps: [8, 12] },
       { exercise: 'Dumbbell/Machine Chest Fly', sets: 3, reps: [10, 15] },
       {
-        exercise:
-          'Barbell/Dumbbell Overhead Tricep Extension OR any tricep exercise',
+        exercise: 'Barbell/Dumbbell Overhead Tricep Extension',
         sets: 3,
         reps: [8, 12],
+        note: 'OR any tricep exercise',
       },
       {
-        exercise: 'Reverse / Hammer / Wrist curl (Pick one)',
+        exercise: 'Reverse / Hammer / Wrist curl',
         sets: 3,
         reps: [10, 20],
+        note: 'Pick one',
       },
     ],
   },
@@ -94,10 +95,10 @@ export const UPPER_LOWER_SPLIT = [
         link: 'https://www.youtube.com/watch?v=bhMWEIAKzs4',
       },
       {
-        exercise:
-          'Barbell/Dumbbell Bicep Curl (Standing, Incline, Preacher, Concentration curl)',
+        exercise: 'Barbell/Dumbbell Bicep Curl',
         sets: 3,
         reps: [8, 12],
+        note: 'Standing, Incline, Preacher, Concentration curl',
       },
       { exercise: 'Barbell/Dumbbell Upright Row', sets: 3, reps: [10, 20] },
     ],
@@ -114,16 +115,17 @@ export const UPPER_LOWER_SPLIT = [
       },
       { exercise: 'Dumbbell Bench Press', sets: 3, reps: [8, 12] },
       {
-        exercise: 'Dumbbell/Barbell Upright Row OR any shoulder exercise',
+        exercise: 'Dumbbell/Barbell Upright Row',
         sets: 3,
         reps: [10, 15],
+        note: 'OR any shoulder exercise',
       },
       { exercise: 'Dumbbell/Barbell Skull Crusher', sets: 3, reps: [8, 12] },
       {
-        exercise:
-          'Reverse / Hammer / Wrist curl (Pick one, Different from Upper 1)',
+        exercise: 'Reverse / Hammer / Wrist curl',
         sets: 3,
         reps: [10, 20],
+        note: 'Pick one, Different from Upper 1',
       },
     ],
   },
@@ -145,9 +147,10 @@ export const UPPER_LOWER_SPLIT = [
         link: 'https://www.youtube.com/watch?v=9nEyLG-mjxg',
       },
       {
-        exercise: 'Barbell/Dumbbell Bicep Curl (Different from Lower 1)',
+        exercise: 'Barbell/Dumbbell Bicep Curl',
         sets: 3,
         reps: [6, 10],
+        note: 'Different from Lower 1',
       },
       { exercise: 'Dumbbell Lateral Raise', sets: 3, reps: [10, 20] },
     ],

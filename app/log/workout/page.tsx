@@ -10,9 +10,9 @@ import WorkoutTable from './workout-table';
 import { cn } from '@/lib/utils';
 import {
   blackOps,
-  FULLBODY_A_B_WORKOUT,
-  FULLBODY_A_B_SCHEDULE_1,
-  FULLBODY_A_B_SCHEDULE_2,
+  FULL_BODY_A_B_WORKOUT,
+  FULL_BODY_A_B_SCHEDULE_1,
+  FULL_BODY_A_B_SCHEDULE_2,
   UPPER_LOWER_SPLIT,
   UPPER_LOWER_SPLIT_SCHEDULE,
 } from '@/lib/constants';
@@ -20,15 +20,15 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 export default function WorkoutPage() {
   return (
-    <Tabs defaultValue="fullbody" className="mt-6">
+    <Tabs defaultValue="ful-lbody" className="mt-6">
       <TabsList>
-        <TabsTrigger value="fullbody">Fullbody</TabsTrigger>
+        <TabsTrigger value="full-body">Full body</TabsTrigger>
         <TabsTrigger value="upper-lower">Upper/Lower</TabsTrigger>
       </TabsList>
-      <TabsContent value="fullbody">
+      <TabsContent value="full-body" tabIndex={-1}>
         <FullbodyWorkout />
       </TabsContent>
-      <TabsContent value="upper-lower">
+      <TabsContent value="upper-lower" tabIndex={-1}>
         <UpperLowerWorkout />
       </TabsContent>
     </Tabs>
@@ -91,7 +91,7 @@ const FullbodyWorkout = () => {
   return (
     <div className="my-8">
       <div className="flex flex-col gap-12 md:flex-row md:justify-between">
-        <WorkoutTable workout={FULLBODY_A_B_WORKOUT} />
+        <WorkoutTable workout={FULL_BODY_A_B_WORKOUT} />
       </div>
 
       <h3
@@ -103,8 +103,8 @@ const FullbodyWorkout = () => {
         Schedule examples
       </h3>
       <div className="flex flex-col gap-12 sm:flex-row">
-        <ScheduleTable schedule={FULLBODY_A_B_SCHEDULE_1} />
-        <ScheduleTable schedule={FULLBODY_A_B_SCHEDULE_2} />
+        <ScheduleTable schedule={FULL_BODY_A_B_SCHEDULE_1} />
+        <ScheduleTable schedule={FULL_BODY_A_B_SCHEDULE_2} />
       </div>
     </div>
   );

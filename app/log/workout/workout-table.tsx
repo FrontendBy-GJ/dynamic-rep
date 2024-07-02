@@ -16,6 +16,7 @@ type Workout = {
     sets: number;
     reps: number[];
     link?: string;
+    note?: string;
   }[];
 };
 
@@ -30,7 +31,7 @@ export default function WorkoutTable({ workout }: { workout: Workout[] }) {
             <h2
               className={`${blackOps.className} text-xl text-center md:text-2xl mb-4`}
             >
-              Workout{' '}
+              Workout:{' '}
               <span
                 className={cn(
                   (w.type === 'A' ||
@@ -68,15 +69,35 @@ export default function WorkoutTable({ workout }: { workout: Workout[] }) {
                   <TableRow key={index} className="h-16">
                     <TableCell className="capitalize text-balance">
                       {exercise.link ? (
-                        <a
-                          className="underline underline-offset-8"
-                          href={exercise.link}
-                          target="_blank"
-                        >
-                          {exercise.exercise}
-                        </a>
+                        <>
+                          {exercise.exercise}{' '}
+                          {exercise.note && (
+                            <span className="text-muted-foreground">
+                              ( {exercise.note} )
+                            </span>
+                          )}
+                          <a
+                            tabIndex={0}
+                            className="text-muted-foreground w-fit group/link"
+                            href={exercise.link}
+                            target="_blank"
+                          >
+                            ({' '}
+                            <span className="group-visited/link:text-purple-800 group-hover/link:underline group-active/link:text-black group-focus-visible/link:underline">
+                              how to
+                            </span>{' '}
+                            )
+                          </a>
+                        </>
                       ) : (
-                        exercise.exercise
+                        <>
+                          {exercise.exercise}{' '}
+                          {exercise.note && (
+                            <span className="text-muted-foreground">
+                              ( {exercise.note} )
+                            </span>
+                          )}
+                        </>
                       )}
                     </TableCell>
                     <TableCell className="text-center">
