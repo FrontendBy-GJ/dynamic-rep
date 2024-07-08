@@ -20,7 +20,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 export default function WorkoutPage() {
   return (
-    <Tabs defaultValue="ful-lbody" className="mt-6">
+    <Tabs defaultValue="full-body" className="mt-6">
       <TabsList>
         <TabsTrigger value="full-body">Full body</TabsTrigger>
         <TabsTrigger value="upper-lower">Upper/Lower</TabsTrigger>

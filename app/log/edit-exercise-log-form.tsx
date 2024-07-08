@@ -131,11 +131,11 @@ export default function EditExerciseLogForm({
     try {
       await editFormData(values);
       setIsEditFormOpen(false);
-      router.refresh();
       toast({
         title: 'Success',
         description: 'Exercise updated successfully!',
       });
+      router.refresh();
     } catch (error) {
       toast({
         title: 'Error',

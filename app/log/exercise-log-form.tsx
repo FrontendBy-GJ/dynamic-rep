@@ -129,8 +129,8 @@ export default function ExerciseLogForm() {
       await getFormData(values);
       setIsFormOpen(false);
       reset();
-      router.refresh();
       toast({ title: 'Success', description: 'Exercise added successfully' });
+      router.refresh();
     } catch (error) {
       toast({
         title: 'Error',
