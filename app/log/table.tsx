@@ -74,6 +74,7 @@ export default function LogTable<TData, TValue>({
       <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between py-4 mb-8">
         <div className="flex items-center gap-4 w-full">
           <Input
+            type="search"
             placeholder="Filter exercises..."
             value={
               (table.getColumn('exercise')?.getFilterValue() as string) ?? ''
